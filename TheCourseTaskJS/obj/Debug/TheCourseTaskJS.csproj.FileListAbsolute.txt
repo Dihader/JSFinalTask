@@ -1,0 +1,5 @@
+D:\Учеба\5 курс\ИИСП\TheCourseTaskJS\TheCourseTaskJS\bin\TheCourseTaskJS.dll
+D:\Учеба\5 курс\ИИСП\TheCourseTaskJS\TheCourseTaskJS\bin\TheCourseTaskJS.pdb
+D:\Учеба\5 курс\ИИСП\TheCourseTaskJS\TheCourseTaskJS\obj\Debug\TheCourseTaskJS.dll
+D:\Учеба\5 курс\ИИСП\TheCourseTaskJS\TheCourseTaskJS\obj\Debug\TheCourseTaskJS.pdb
+D:\Учеба\5 курс\ИИСП\TheCourseTaskJS\TheCourseTaskJS\obj\Debug\TheCourseTaskJS.csprojResolveAssemblyReference.cache
