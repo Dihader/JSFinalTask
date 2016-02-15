@@ -56,8 +56,10 @@ function checkNumberParts() {
         return false;
     }
 }
+
 function createElementsWithDiv() {
     var newDiv = document.createElement('div');
+    newDiv.setAttribute("class", "form-group");
     document.body.appendChild(newDiv);
     createLabelType(newDiv);
     createInputTypeText(newDiv);
@@ -77,29 +79,61 @@ function createInputTypeText(newDiv) {
     var valueMask = document.getElementById('txtMask').value;
     newInput.placeholder = valueMask;
     newDiv.appendChild(newInput);
-    newInput.addEventListener("keypress", function () { maskTypeFilter(newInput) });
+    //  newInput.addEventListener("keypress", function () { maskTypeFilter(newInput) });// Метод точной маски.
 }
 function createButtonOk(newDiv) {
     var newButtonOk = document.createElement('button');
     newButtonOk.innerText = "OK";
     newDiv.appendChild(newButtonOk);
-
+    newButtonOk.setAttribute("class", "btn btn-primary");
+    newButtonOk.addEventListener("click", function () { getResult(newDiv) });
 }
 function createLabelResult(newDiv) {
     var newResult = document.createElement('label');
+    newResult.className = "lblResult";
     newResult.innerText = "Результат:";
+    newResult.setAttribute("class", "bg-success");
     newDiv.appendChild(newResult);
 }
 function createButtonDelete(newDiv) {
     var newButtonDelete = document.createElement('button');
     newButtonDelete.innerText = "X";
     newDiv.appendChild(newButtonDelete);
+    newButtonDelete.setAttribute("class","btn btn-danger");
     newButtonDelete.addEventListener("click", function () { deleteDiv(newDiv) });
 }
+
 function deleteDiv(newDiv) {
     document.body.removeChild(newDiv);
-
 }
+
+/*
+Правила пользования. Каждый пробел введенный в тип, будет заменяться на его аналог идущий в маске. 
+Например +-- заменит первый пробел на + второй на - и третий на -. 
+*/
+
+function getResult(newDiv) {
+    var resultLabel = newDiv.getElementsByTagName("label")[1];
+    var inputTextType = newDiv.getElementsByTagName("input")[0].value;
+    var mask = newDiv.getElementsByTagName("input")[0].placeholder;
+    var splitString = inputTextType.split(' ');
+    var result = "";
+    // result = inputTextType;//для split метода
+    for (var i = 0; i < mask.length; i++) {
+        splitString[i] = splitString[i] + mask[i]
+        //  var result = result.replace(result[index], mask[i]);//Нет возможности вставить пробел поэтому использован метод split
+    }
+    for (var i = 0; i < splitString.length; i++) {
+        result += splitString[i];
+    }
+    resultLabel.innerText = result;
+}
+
+
+/*
+Метод для точной маски, в котором приходилось любой символ, который не известен, заменять на  символ(_). 
+Метод был не гибким, так как нужно было, знать количество символов введенных пользователем.
+*/
 function maskTypeFilter(newInput) {
     var code = event.keyCode;
     var mask = newInput.placeholder;
@@ -114,10 +148,6 @@ function maskTypeFilter(newInput) {
         alert('Вводите по маске!');
         event.returnValue = false;
         return false;
+
     }
 }
-
-
-
-
-

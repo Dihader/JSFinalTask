@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="MainJS.js" />
     <Content Include="MainPage.html" />
+    <Content Include="styles\bootstrap.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

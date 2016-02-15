@@ -2,20 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Маски</title>
-    <style type="text/css">
-        .auto-style1 {
-            width: auto;
-        }
-    </style>
+    <title>Маски</title>    
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css"/>
 </head>
 <body>
-    <table style="width: 100%; border-width: medium; border-style: double;" id="tblFirst">
+    <table class="table table table-hover" id="tblFirst">
         <caption>Первая часть</caption>
         <tr>
-            <td id="tdForSelect" class="auto-style1" onchange="showTypeControls()">
+            <td id="tdForSelect"onchange="showTypeControls()">
                 <label>Тип:</label>
-                <select id="cbxTypeSelect" style="width: 240px">
+                <select class="form-control" id="cbxTypeSelect">
                     <option value="PostAddress">Почтовый адрес</option>
                     <option value="PhoneNumber">Телефоный номер</option>
                     <option value="ExponentialNotation">Поле ввода для числа в экспоненциальной записи</option>
@@ -25,20 +21,20 @@
 
             <td id="tdForMask">
                 <label>Маска:</label>
-                <input type="text" placeholder="Маска"  id="txtMask" />
+                <input class="form-control" type="text" placeholder="Маска"  id="txtMask" />
             </td>
 
             <td id="tdForParts">
                 <label >Количество частей:</label>
-                <input type="text" placeholder="Кол-во частей" id="txtPartsCounter"/>
+                <input class="form-control" type="text" placeholder="Кол-во частей" id="txtPartsCounter"/>
             </td>
 
             <td id="tdForAdd">
-                <button id="btnAddControls" onclick="createNewControls()">Добавить</button>
+                <button id="btnAddControls" class="btn btn-success" onclick="createNewControls()">Добавить</button>
             </td>
         </tr>
     </table>
-    <div id="partSecond" style="text-align: center;">Вторая часть</div>    
+    <div id="partSecond" class="bg-primary">>Вторая часть</div>    
 
     <script src="MainJS.js" type="text/javascript"></script>
 </body>
