@@ -57,6 +57,7 @@ function checkNumberParts() {
     }
 }
 
+
 function createElementsWithDiv() {
     var newDiv = document.createElement('div');
     newDiv.setAttribute("class", "form-group");
@@ -99,8 +100,15 @@ function createButtonDelete(newDiv) {
     var newButtonDelete = document.createElement('button');
     newButtonDelete.innerText = "X";
     newDiv.appendChild(newButtonDelete);
-    newButtonDelete.setAttribute("class","btn btn-danger");
+    newButtonDelete.setAttribute("class", "btn btn-danger");
     newButtonDelete.addEventListener("click", function () { deleteDiv(newDiv) });
+}
+function isTextSuitableMask(text, mask) {
+    var masText = text.split(' ');
+    if (masText.length - 1 == mask.length) {
+        return true;
+    }
+    return false;
 }
 
 function deleteDiv(newDiv) {
@@ -109,7 +117,7 @@ function deleteDiv(newDiv) {
 
 /*
 Правила пользования. Каждый пробел введенный в тип, будет заменяться на его аналог идущий в маске. 
-Например +-- заменит первый пробел на + второй на - и третий на -. 
+Например + - заменит первый пробел на '+' второй на ' ' и третий на '-'. 
 */
 
 function getResult(newDiv) {
@@ -117,16 +125,22 @@ function getResult(newDiv) {
     var inputTextType = newDiv.getElementsByTagName("input")[0].value;
     var mask = newDiv.getElementsByTagName("input")[0].placeholder;
     var splitString = inputTextType.split(' ');
-    var result = "";
-    // result = inputTextType;//для split метода
-    for (var i = 0; i < mask.length; i++) {
-        splitString[i] = splitString[i] + mask[i]
-        //  var result = result.replace(result[index], mask[i]);//Нет возможности вставить пробел поэтому использован метод split
+    if (isTextSuitableMask(inputTextType, mask)) {
+        var result = "";
+        // result = inputTextType;//для replace метода
+        for (var i = 0; i < mask.length; i++) {
+            splitString[i] = splitString[i] + mask[i];
+            //  var result = result.replace(" ", mask[i]);//Нет возможности вставить пробел поэтому использован метод split
+        }
+        for (var i = 0; i < splitString.length; i++) {
+            result += splitString[i];
+        }
+        resultLabel.innerText = result;
     }
-    for (var i = 0; i < splitString.length; i++) {
-        result += splitString[i];
+
+    else {
+        resultLabel.innerText = "Ошибка, в маске " + mask.length + " символов, значит в поле должно быть столько же пробелов!";
     }
-    resultLabel.innerText = result;
 }
 
 

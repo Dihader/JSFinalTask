@@ -2,14 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Маски</title>    
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css"/>
+    <title>Маски</title>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
 </head>
 <body>
+    <div>
+        Первая часть.<br />
+        Правила пользования. Каждый пробел введенный в тип, будет заменяться на его аналог идущий в маске.<br /> 
+        Например +^- заменит первый пробел на '+', второй на '^', и третий на '-'. 
+    </div>
     <table class="table table table-hover" id="tblFirst">
-        <caption>Первая часть</caption>
         <tr>
-            <td id="tdForSelect"onchange="showTypeControls()">
+            <td id="tdForSelect" onchange="showTypeControls()">
                 <label>Тип:</label>
                 <select class="form-control" id="cbxTypeSelect">
                     <option value="PostAddress">Почтовый адрес</option>
@@ -21,12 +25,12 @@
 
             <td id="tdForMask">
                 <label>Маска:</label>
-                <input class="form-control" type="text" placeholder="Маска"  id="txtMask" />
+                <input class="form-control" type="text" placeholder="Маска" id="txtMask" />
             </td>
 
             <td id="tdForParts">
-                <label >Количество частей:</label>
-                <input class="form-control" type="text" placeholder="Кол-во частей" id="txtPartsCounter"/>
+                <label>Количество частей:</label>
+                <input class="form-control" type="text" placeholder="Кол-во частей" id="txtPartsCounter" />
             </td>
 
             <td id="tdForAdd">
@@ -34,7 +38,7 @@
             </td>
         </tr>
     </table>
-    <div id="partSecond" class="bg-primary">>Вторая часть</div>    
+    <div id="partSecond" class="bg-primary">>Вторая часть</div>
 
     <script src="MainJS.js" type="text/javascript"></script>
 </body>
